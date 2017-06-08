@@ -5,9 +5,9 @@ This is my Learn.co Sinatra portfolio project.
 
 This app allows the tracking of classes, students, and instructors.
 
-#Classes
+#Courses
 
-You can view all the classes now offered by the school and you can view the students in a class. Also, you can view which instructors is assigned to teach which class.
+You can view all the Courses now offered by the school and you can view the students in a class. Also, you can view which instructors is assigned to teach which class.
 
 #Instructors
 
@@ -19,15 +19,33 @@ You can view all of the students at the school.
 
 #For my reference
 
+s1 = Student.create(:name => "Seva", :email => "seva@test.com", :password => "test")
+s2 = Student.create(:name => "Ronnie", :email => "ron@test.com", :password => "test")
+s3 = Student.create(:name => "Mike", :email => "mike@test.com", :password => "test")
+s4 = Student.create(:name => "Josh", :email => "josh@test.com", :password => "test")
+s5 = Student.create(:name => "Dave", :email => "dave@test.com", :password => "test")
+
+i1 = Instructor.create(:name => "Sheri", :email => "sher@test.com", :password => "test")
+i2 = Instructor.create(:name => "Grace", :email => "grace@test.com", :password => "test")
+i3 = Instructor.create(:name => "Rachel", :email => "rachel@test.com", :password => "test")
+i4 = Instructor.create(:name => "Marsha", :email => "marsha@test.com", :password => "test")
+i5 = Instructor.create(:name => "Ellen", :email => "ellen@test.com", :password => "test")
+
+c1 = Course.create(:title => "Intro to stuff", :start_date => "9/1", :weeks => "8", :semester => "Winter", :year => "2016")
+c2 = Course.create(:title => "Intermediate stuff", :start_date => "9/1", :weeks => "16", :semester => "Winter", :year => "2016")
+c3 = Course.create(:title => "Advanced stuff", :start_date => "9/1", :weeks => "8", :semester => "Spring", :year => "2017")
+c4 = Course.create(:title => "Fun Elective", :start_date => "2/15", :weeks => "16", :semester => "Spring", :year => "2017")
+c5 = Course.create(:title => "Optional Class", :start_date => "2/15", :weeks => "4", :semester => "Spring", :year => "2017")
+
 models
   Students have many classes, have many instructors. Have secure passwords
   Instructors have many classes, have many students through classes. Have secure passwords
   Classes have many students, have many instructors
 
 db
-  students have names, emails, instructors_id
-  instructors have name, emails, students through classes
-  classes have title, start date, end date, weeks, semester, year, students_id
+  students have names, emails, instructors_id #
+  instructors have name, emails, students through classes  #
+  classes have title, start date, end date, weeks, semester, year, students_id #
 
 views
   main page - sign in, sign up

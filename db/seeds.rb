@@ -1,0 +1,17 @@
+Student.create(:name => "Seva", :email => "seva@test.com", :password => "test")
+Student.create(:name => "Ronnie", :email => "ron@test.com", :password => "test")
+Student.create(:name => "Mike", :email => "mike@test.com", :password => "test")
+Student.create(:name => "Josh", :email => "josh@test.com", :password => "test")
+Student.create(:name => "Dave", :email => "dave@test.com", :password => "test")
+
+Instructor.create(:name => "Sheri", :email => "sher@test.com", :password => "test")
+Instructor.create(:name => "Grace", :email => "grace@test.com", :password => "test")
+Instructor.create(:name => "Rachel", :email => "rachel@test.com", :password => "test")
+Instructor.create(:name => "Marsha", :email => "marsha@test.com", :password => "test")
+Instructor.create(:name => "Ellen", :email => "ellen@test.com", :password => "test")
+
+Course.create(:title => "Intro to stuff", :start_date => "9/1", :weeks => "8", :semester => "Winter", :year => "2016")
+Course.create(:title => "Intermediate stuff", :start_date => "9/1", :weeks => "16", :semester => "Winter", :year => "2016")
+Course.create(:title => "Advanced stuff", :start_date => "9/1", :weeks => "8", :semester => "Spring", :year => "2017")
+Course.create(:title => "Fun Elective", :start_date => "2/15", :weeks => "16", :semester => "Spring", :year => "2017")
+Course.create(:title => "Optional Class", :start_date => "2/15", :weeks => "4", :semester => "Spring", :year => "2017")

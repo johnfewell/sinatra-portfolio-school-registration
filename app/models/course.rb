@@ -1,5 +1,5 @@
 class Course <ActiveRecord::Base
-  has_many :institute
+  has_many :instructors
   has_many :students
 
   def slug
