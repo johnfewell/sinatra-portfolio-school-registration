@@ -1,7 +1,6 @@
-class Instructor <ActiveRecord::Base
-  has_many :classes
-  has_many :students, :through => :classes
-  has_secure_password
+class Course <ActiveRecord::Base
+  has_many :institute
+  has_many :students
 
   def slug
     username.downcase.gsub(" ","-")

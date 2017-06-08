@@ -27,7 +27,7 @@ models
 db
   students have names, emails, instructors_id
   instructors have name, emails, students through classes
-  classes have start date, end date, weeks, semester, year, students_id
+  classes have title, start date, end date, weeks, semester, year, students_id
 
 views
   main page - sign in, sign up
