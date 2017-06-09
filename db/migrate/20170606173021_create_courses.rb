@@ -6,7 +6,7 @@ class CreateCourses < ActiveRecord::Migration[5.1]
       t.integer :weeks
       t.string :semester
       t.integer :year
-      t.integer :students_id
+      t.integer :instructor_id
     end
   end
 end

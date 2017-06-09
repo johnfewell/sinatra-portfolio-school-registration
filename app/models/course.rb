@@ -1,6 +1,7 @@
 class Course <ActiveRecord::Base
-  has_many :instructors
-  has_many :students
+  belongs_to :instructor
+  has_many :course_students
+  has_many :students, :through => :course_students
 
   def slug
     username.downcase.gsub(" ","-")

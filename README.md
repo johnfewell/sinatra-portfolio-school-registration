@@ -19,6 +19,10 @@ You can view all of the students at the school.
 
 #For my reference
 
+s = Student.first
+teach = Institute.first
+c = Course.first
+
 s1 = Student.create(:name => "Seva", :email => "seva@test.com", :password => "test")
 s2 = Student.create(:name => "Ronnie", :email => "ron@test.com", :password => "test")
 s3 = Student.create(:name => "Mike", :email => "mike@test.com", :password => "test")

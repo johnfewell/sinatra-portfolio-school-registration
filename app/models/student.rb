@@ -1,6 +1,7 @@
 class Student <ActiveRecord::Base
-  has_many :classes
-  has_many :instructors, :through => :classes
+  has_many :course_students
+  has_many :courses, :through => :course_students
+  has_many :instructors, :through => :courses
   has_secure_password
 
   def slug
