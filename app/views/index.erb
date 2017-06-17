@@ -1,2 +1,32 @@
-<h1>Welcome to the School Registration App!</h1>
-You are logged in!
+<h1>Welcome to the School Registration App</h1>
+
+<p>Hello, <%= @user.name %>
+<h2></h2>
+
+<% if @user.courses.empty? %>
+  <p>
+  You are curerntly not registered for any classes. Sign up for some below using the registration form.
+  </p>
+  <% else %>
+  <h3>You are currently enrolled in:</h3>
+  <ul>
+    <% @user.courses.each do |c| %>
+    <li>
+      <%= c.title %> - <%= c.instructor %> - <%= c.year %>
+    </li>
+  </ul>
+
+  <% end %>
+
+<% end %>
+
+<hr />
+<a href="/courses">All Courses</a> - View or Sign up
+<br />
+<a href="/instructors">All Instructors</a>
+<br />
+<strong>if instructor</strong>
+<br />
+<a href="/students">All Students</a>
+
+

@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   #show all courses
   get '/courses' do
     if logged_in?
-      erb :'/courses/index'
+      erb :'/courses/courses'
     else
       redirect to '/'
     end

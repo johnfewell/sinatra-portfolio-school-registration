@@ -9,6 +9,12 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
+      #this is ugly and i need to refactor
+      if Student.find(session[:user_id])
+        @user = Student.find(session[:user_id])
+      else
+        @user = Instructor.find(session[:user_id])
+      end
       erb :'index'
     else
       erb :'index_logged_out'
@@ -17,7 +23,7 @@ class ApplicationController < Sinatra::Base
 
   post '/' do
     if @user = Student.find_by(:email => params[:email])
-    else 
+    else
       @user = Instructor.find_by(:email => params[:email])
     end
 
@@ -44,13 +50,29 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post '/signup' do
+    if params.any? { |k, v| v.length <=2 }
+      redirect to '/signup'
+    else
+      @user = Student.new(:name => params[:name], :email => params[:email], :password => params[:password])
+      @user.save
+      session[:user_id] = @user.id
+      redirect to '/'
+    end
+  end
+
   helpers do
      def logged_in?
        !!session[:user_id]
      end
 
      def current_user
-       User.find(session[:user_id])
+       if Student.find(session[:user_id])
+         @user = Student.find(session[:user_id])
+       else
+         @user = Instructor.find(session[:user_id])
+       end
+       #binding.pry
      end
 
    end
