@@ -2,11 +2,32 @@ class CoursesController < ApplicationController
 
   #show all courses
   get '/courses' do
+
     if logged_in?
+        #i really need to get rid of this
+      if Student.find(session[:user_id])
+        @user = Student.find(session[:user_id])
+      else
+        @user = Instructor.find(session[:user_id])
+      end
+
       erb :'/courses/courses'
     else
       redirect to '/'
     end
+  end
+
+  post '/courses' do
+      #i really need to get rid of this
+    if Student.find(session[:user_id])
+      @user = Student.find(session[:user_id])
+    else
+      @user = Instructor.find(session[:user_id])
+    end
+    if !params[:courses][:id].empty?
+      #this is where i left off
+    @course
+    @user.courses <<
   end
 
   #show single courses

@@ -101,3 +101,8 @@ controllers
     get new - view only if instructor
     post new
     delete class
+
+
+    git add --all
+    git commit -m "Improved the basic loggin in view"
+    git push origin master
