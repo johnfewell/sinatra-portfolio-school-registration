@@ -71,6 +71,4 @@ class InstructorsController < ApplicationController
       end
     end
 
-  end
-
 end

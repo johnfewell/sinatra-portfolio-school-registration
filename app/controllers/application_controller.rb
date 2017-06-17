@@ -15,6 +15,27 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post '/' do
+    if @user = Student.find_by(:email => params[:email])
+    else 
+      @user = Instructor.find_by(:email => params[:email])
+    end
+
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/"
+    else
+      redirect to '/signup'
+    end
+  end
+
+  get '/logout' do
+    if !!session[:user_id]
+      session.destroy
+    end
+      redirect to '/'
+  end
+
   get '/signup' do
     if logged_in?
       redirect to '/'
