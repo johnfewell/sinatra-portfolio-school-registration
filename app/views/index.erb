@@ -1,61 +1,73 @@
-<h1>Welcome to the School Registration App</h1>
+<div id="wrapper">
 
-<p>Hello, <%= @user.name %>
-<h2></h2>
+  <h1>School Registration</h1>
 
-<% if @user.courses.empty? %>
-  <p>
-  You are curerntly not registered for any classes. Sign up for some below using the registration form.
-  </p>
-  <% else %>
-  <h3>You are currently enrolled in:</h3>
-  <table class="pure-table pure-table-bordered">
-    <thdead>
-      <tr>
-        <th>Title</th>
-        <th>Instructor</th>
-        <th>Start Date</th>
-        <th>Semester</th>
-        <th>Weeks</th>
-        <th>Year</th>
-      </tr>
-  </thdead>
-  <tbody>
-    <% @user.courses.each do |c| %>
-    <tr>
-      <td>
-        <%= c.title %>
-      </td>
-      <td>
-        <% if c.instructor_id == "" %>
-          <%= puts "Instructor Unassigned" %>
-        <% else %>
-          <%= c.instructor %>
+  <div class="pure-menu custom-restricted-width">
+      <span class="pure-menu-heading">Menu</span>
+
+      <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/courses" class="pure-menu-link">All Courses</a></li>
+          <li class="pure-menu-item"><a href="/instructors" class="pure-menu-link">All Instructors</a></li>
+          <li class="pure-menu-heading">If instructor</li>
+          <li class="pure-menu-item"><a href="/students" class="pure-menu-link">All Students</a></li>
+          <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+
+      </ul>
+  </div>
+
+  <div id="main">
+
+    <p>Hello, <%= @user.name %>
+    <h2></h2>
+
+    <% if @user.courses.empty? %>
+      <p>
+      You are curerntly not registered for any classes. Sign up for some below using the registration form.
+      </p>
+      <% else %>
+      <h3>You are currently enrolled in:</h3>
+      <table class="pure-table pure-table-bordered">
+        <thdead>
+          <tr>
+            <th>Title</th>
+            <th>Instructor</th>
+            <th>Start Date</th>
+            <th>Semester</th>
+            <th>Weeks</th>
+            <th>Year</th>
+          </tr>
+      </thdead>
+      <tbody>
+        <% @user.courses.each do |c| %>
+        <tr>
+          <td>
+            <%= c.title %>
+          </td>
+          <td>
+            <% if c.instructor_id == "" %>
+              <%= puts "Instructor Unassigned" %>
+            <% else %>
+              <%= c.instructor %>
+            <% end %>
+          </td>
+          <td>
+            <%= c.start_date %>
+          </td>
+          <td>
+            <%= c.semester %>
+          </td>
+          <td>
+            <%= c.weeks %>
+          </td>
+          <td>
+            <%= c.year %>
+          </td>
+        </tr>
         <% end %>
-      </td>
-      <td>
-        <%= c.start_date %>
-      </td>
-      <td>
-        <%= c.semester %>
-      </td>
-      <td>
-        <%= c.year %>
-      </td>
-      <td>
-        <%= c.year %>
-      </td>
-    </tr>
+        </tbody>
+      </table>
     <% end %>
-    </tbody>
-  </table>
-<% end %>
 
-<hr />
-<a href="/courses">All Courses</a> - View or Sign up
-<br />
-<a href="/instructors">All Instructors</a>
-<br />
-<strong>if instructor</strong>
-<br />
-<a href="/students">All Students</a>
+
+  </div>
+</div>

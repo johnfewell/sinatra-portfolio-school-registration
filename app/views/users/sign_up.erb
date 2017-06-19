@@ -1,9 +1,23 @@
-<h1>Sign up as a new student</h1>
+<div id="outer" style="width:100%">
+  <h1 align="center">Sign up as a new student</h1>
+    <div id="inner">
+      <form method="post" action="/signup" method="POST" class="pure-form pure-form-stacked">
+          <fieldset>
+              <legend>Sign Up</legend>
 
-<h3>Sign Up</h3>
-<form action="/signup" method="POST">
-  <p>Name: <input type="text" name="name"></p>
-  <p>Email (this will be your login name): <input type="text" name="email"></p>
-  <p>Password: <input type="password" name="password"></p>
-  <input class="btn btn-primary" type="submit">
-</form
+              <label for="email">Email (this will be your login):</label>
+              <input id="email" type="email" name="email" placeholder="Email">
+              <span class="pure-form-message">This is a required field.</span>
+
+              <label for="name">Name:</label>
+              <input id="name" type="text" name="name" placeholder="Full Name">
+              <span class="pure-form-message">First and last</span>
+
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password" placeholder="Password">
+
+              <button type="submit" value="submit" class="pure-button pure-button-primary">Sign up</button>
+          </fieldset>
+      </form>
+    </div>
+</div>
