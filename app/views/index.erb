@@ -44,10 +44,10 @@
             <%= c.title %>
           </td>
           <td>
-            <% if c.instructor_id == "" %>
-              <%= puts "Instructor Unassigned" %>
+            <% if !c.instructor_id? %>
+              <%= "Instructor Unassigned" %>
             <% else %>
-              <%= c.instructor %>
+              <%= c.instructor.name %>
             <% end %>
           </td>
           <td>

@@ -103,6 +103,6 @@ controllers
     delete class
 
 
-    git add --all
-    git commit -m "Added styling"
-    git push origin master
+git add --all
+git commit -m "Added styling to signup and other places"
+git push origin master

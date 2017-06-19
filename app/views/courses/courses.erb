@@ -1,0 +1,10 @@
+<form action="/courses" method="POST">
+  <h3>Register for classes</h3>
+  <% Course.all.each do |c|  %>
+    <label> <%= c.title %></label>
+    <input type="checkbox" name="title" value="<%= c.id  %>" id="<%= c.title %>" <%= 'checked' if @user.courses.include?(c) %>><br />
+  <% end %><br />
+
+  <input type="submit" value="Edit Registration" />
+
+</form>
