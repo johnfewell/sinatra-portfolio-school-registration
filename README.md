@@ -104,5 +104,5 @@ controllers
 
 
     git add --all
-    git commit -m "Improved the basic loggin in view"
+    git commit -m "Added styling"
     git push origin master

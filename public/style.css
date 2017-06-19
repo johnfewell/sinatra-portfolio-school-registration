@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Patua+One|Open+Sans);
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h1 { font-weight: 300; font-size: 38px; margin: 0px 0px 0px 0px; line-height: 120%; font-family: 'Open sans', sans-serif; }
+
+p { font-family: 'Open sans', sans-serif; color: #777777; font-size: 14px; }
+
+a { color: #f20553; text-decoration: none; }
+
+a:hover { color: #D80649; text-decoration: none; }
+
+/* Clearfix */
+
+.cf:before,
+
+.cf:after { content: " "; display: table; }
+
+.cf:after { clear: both }
+
+body {
+  background: #f7f7f7;
+}
+
+#inner {
+  display: table;
+  margin: 0 auto;
+}

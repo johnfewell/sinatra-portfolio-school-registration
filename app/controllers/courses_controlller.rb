@@ -24,10 +24,10 @@ class CoursesController < ApplicationController
     else
       @user = Instructor.find(session[:user_id])
     end
-    if !params[:courses][:id].empty?
-      #this is where i left off
-    @course
-    @user.courses <<
+    # if !params[:courses][:id].empty?
+    #   #this is where i left off
+    # @course
+    # @user.courses <<
   end
 
   #show single courses

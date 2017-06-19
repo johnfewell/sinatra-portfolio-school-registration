@@ -9,15 +9,46 @@
   </p>
   <% else %>
   <h3>You are currently enrolled in:</h3>
-  <ul>
+  <table class="pure-table pure-table-bordered">
+    <thdead>
+      <tr>
+        <th>Title</th>
+        <th>Instructor</th>
+        <th>Start Date</th>
+        <th>Semester</th>
+        <th>Weeks</th>
+        <th>Year</th>
+      </tr>
+  </thdead>
+  <tbody>
     <% @user.courses.each do |c| %>
-    <li>
-      <%= c.title %> - <%= c.instructor %> - <%= c.year %>
-    </li>
-  </ul>
-
-  <% end %>
-
+    <tr>
+      <td>
+        <%= c.title %>
+      </td>
+      <td>
+        <% if c.instructor_id == "" %>
+          <%= puts "Instructor Unassigned" %>
+        <% else %>
+          <%= c.instructor %>
+        <% end %>
+      </td>
+      <td>
+        <%= c.start_date %>
+      </td>
+      <td>
+        <%= c.semester %>
+      </td>
+      <td>
+        <%= c.year %>
+      </td>
+      <td>
+        <%= c.year %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 <hr />

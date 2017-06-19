@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
       else
         @user = Instructor.find(session[:user_id])
       end
+
       erb :'index'
     else
       erb :'index_logged_out'
