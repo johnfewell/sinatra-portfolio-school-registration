@@ -6,11 +6,11 @@ class Instructor <ActiveRecord::Base
   has_secure_password
 
   def slug
-    username.downcase.gsub(" ","-")
+    name.downcase.gsub(" ","-")
   end
 
   def self.find_by_slug(slug)
-    User.all.find{|u| u.slug == slug}
+    Instructor.all.find{|u| u.slug == slug}
   end
 
 end

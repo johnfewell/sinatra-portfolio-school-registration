@@ -6,9 +6,9 @@ class CoursesController < ApplicationController
     if logged_in?
         #i really need to get rid of this
       if Student.find(session[:user_id])
-        @user = Student.find(session[:user_id])
+        @stu_user = Student.find(session[:user_id])
       else
-        @user = Instructor.find(session[:user_id])
+        @inst_user = Instructor.find(session[:user_id])
       end
 
       erb :'/courses/courses'
@@ -18,16 +18,10 @@ class CoursesController < ApplicationController
   end
 
   post '/courses' do
-      #i really need to get rid of this
-    if Student.find(session[:user_id])
-      @user = Student.find(session[:user_id])
-    else
-      @user = Instructor.find(session[:user_id])
-    end
-    # if !params[:courses][:id].empty?
-    #   #this is where i left off
-    # @course
-    # @user.courses <<
+    @user = Student.find(session[:user_id])
+    @user.update(params[:student])
+    @user.save
+    redirect to '/'
   end
 
   #show single courses

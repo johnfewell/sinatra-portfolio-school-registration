@@ -1,10 +1,77 @@
-<form action="/courses" method="POST">
-  <h3>Register for classes</h3>
-  <% Course.all.each do |c|  %>
-    <label> <%= c.title %></label>
-    <input type="checkbox" name="title" value="<%= c.id  %>" id="<%= c.title %>" <%= 'checked' if @user.courses.include?(c) %>><br />
-  <% end %><br />
+<div id="wrapper">
+  <div class="pure-menu custom-restricted-width">
+      <span class="pure-menu-heading">Menu</span>
 
-  <input type="submit" value="Edit Registration" />
+      <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/courses" class="pure-menu-link">All Courses</a></li>
+          <li class="pure-menu-item"><a href="/instructors" class="pure-menu-link">All Instructors</a></li>
+          <li class="pure-menu-heading">If instructor</li>
+          <li class="pure-menu-item"><a href="/students" class="pure-menu-link">All Students</a></li>
+          <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+      </ul>
 
-</form>
+  </div>
+
+  <div id="main">
+
+    <form action="/courses" method="POST">
+      <h3>Register for classes</h3>
+      <div id="table-wrapper">
+        <table class="pure-table pure-table-bordered">
+          <thdead>
+            <tr>
+              <th>Title</th>
+              <th>Instructor</th>
+              <th>Start Date</th>
+              <th>Semester</th>
+              <th>Weeks</th>
+              <th>Year</th>
+              <th>Registered</th>
+            </tr>
+          </thdead>
+          <tbody>
+            <% Course.all.each do |c|  %>
+              <tr>
+                <td>
+                  <%= c.title %>
+                </td>
+                <td>
+                  <% if !c.instructor_id? %>
+                    <%= "Instructor Unassigned" %>
+                  <% else %>
+                    <%= c.instructor.name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= c.start_date %>
+                </td>
+                <td>
+                  <%= c.semester %>
+                </td>
+                <td>
+                  <%= c.weeks %>
+                </td>
+                <td>
+                  <%= c.year %>
+                </td>
+                <td >
+                  <% if !@inst_user %>
+                    <center>
+                      <input type="checkbox" name="student[course_ids][]" value="<%= c.id  %>"  <%= 'checked' if @stu_user.courses.include?(c) %>>
+                    </center>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br />
+        <% if !@inst_user %>
+         <center>
+           <input type="submit" class="button-submit pure-button" value="Edit Registration" />
+         </center>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</div>

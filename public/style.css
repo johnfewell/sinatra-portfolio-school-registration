@@ -13,6 +13,15 @@ a { color: #f20553; text-decoration: none; }
 
 a:hover { color: #D80649; text-decoration: none; }
 
+.button-submit {
+  font-size: 125% !important;
+  color: white !important;
+  border-radius: 4px !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+  background: rgb(66, 184, 221) !important;
+
+}
+
 /* Clearfix */
 
 .cf:before,
@@ -32,3 +41,7 @@ body {
 
 
 #main { margin-left: 200px; }
+
+#table-wrapper { float: left;
+  margin: auto;
+ }

@@ -73,7 +73,6 @@ class ApplicationController < Sinatra::Base
        else
          @user = Instructor.find(session[:user_id])
        end
-       #binding.pry
      end
 
    end

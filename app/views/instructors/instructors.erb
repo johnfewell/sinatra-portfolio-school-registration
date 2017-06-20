@@ -1,0 +1,36 @@
+<div id="wrapper">
+  <div class="pure-menu custom-restricted-width">
+      <span class="pure-menu-heading">Menu</span>
+
+      <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/courses" class="pure-menu-link">All Courses</a></li>
+          <li class="pure-menu-item"><a href="/instructors" class="pure-menu-link">All Instructors</a></li>
+          <li class="pure-menu-heading">If instructor</li>
+          <li class="pure-menu-item"><a href="/students" class="pure-menu-link">All Students</a></li>
+          <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+      </ul>
+
+  </div>
+
+  <div id="main">
+      <h3>Instructors</h3>
+      <div id="table-wrapper">
+        <table class="pure-table pure-table-bordered">
+          <thdead>
+            <tr>
+              <th>Name</th>
+            </tr>
+          </thdead>
+          <tbody>
+            <% Instructor.all.each do |i|  %>
+              <tr>
+                <td>
+                  <a href="/instructors/<%= i.slug %>"><%= i.name %></a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
