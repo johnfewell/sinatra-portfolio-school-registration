@@ -13,24 +13,20 @@
   </div>
 
   <div id="main">
-      <h3>Students</h3>
-      <div id="table-wrapper">
-        <table class="pure-table pure-table-bordered">
-          <thead>
-            <tr>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% Student.all.each do |s|  %>
-              <tr>
-                <td>
-                  <a href="/students/<%= s.slug %>"><%= s.name %></a>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+    <h2>Tite: <%= @course.title %></h2>
+    <h3>Instructor: <% if !@course.instructor_id? %>
+          <%= "Instructor Unassigned" %>
+        <% else %>
+          <a href="/instructors/<%= @course.inst_slug %>"><%= @course.instructor.name %></a></h3>
+        <% end %>
+    <h4>Weeks: <%= @course.weeks %></h4>
+    <h4>Start Date: <%= @course.start_date %></h4>
+    <h4>Year: <%= @course.year %></h4>
+    <h4>Description: <%= @course.description %></h4>
+    <br />
+    <a class="pure-button" href="/courses/<%= @course.slug %>/edit">Edit Course</a>
+    <a class="pure-button" href="/courses/new">New Course</a>
+
     </div>
   </div>
 </div>

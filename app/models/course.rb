@@ -4,11 +4,15 @@ class Course <ActiveRecord::Base
   has_many :students, :through => :course_students
 
   def slug
-    username.downcase.gsub(" ","-")
+    title.downcase.gsub(" ","-")
+  end
+
+  def inst_slug
+    instructor.name.downcase.gsub(" ","-")
   end
 
   def self.find_by_slug(slug)
-    User.all.find{|u| u.slug == slug}
+    Course.all.find{|u| u.slug == slug}
   end
 
 end

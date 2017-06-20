@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   #show all students
   get '/students' do
     if logged_in?
-      erb :'/students/index'
+      erb :'/students/students'
     else
       redirect to '/'
     end

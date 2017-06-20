@@ -104,5 +104,5 @@ controllers
 
 
 git add --all
-git commit -m "Added styling to signup and other places"
+git commit -m "Done with course reg edit, done with instructors index"
 git push origin master

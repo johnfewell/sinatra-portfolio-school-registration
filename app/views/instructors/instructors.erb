@@ -3,9 +3,9 @@
       <span class="pure-menu-heading">Menu</span>
 
       <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
           <li class="pure-menu-item"><a href="/courses" class="pure-menu-link">All Courses</a></li>
           <li class="pure-menu-item"><a href="/instructors" class="pure-menu-link">All Instructors</a></li>
-          <li class="pure-menu-heading">If instructor</li>
           <li class="pure-menu-item"><a href="/students" class="pure-menu-link">All Students</a></li>
           <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
       </ul>
@@ -16,11 +16,11 @@
       <h3>Instructors</h3>
       <div id="table-wrapper">
         <table class="pure-table pure-table-bordered">
-          <thdead>
+          <thead>
             <tr>
               <th>Name</th>
             </tr>
-          </thdead>
+          </thead>
           <tbody>
             <% Instructor.all.each do |i|  %>
               <tr>
