@@ -60,6 +60,7 @@ class CoursesController < ApplicationController
     if params[:course][:title].empty?
       redirect to "/courses/#{@course.slug}/edit"
     else
+      
       @course.update(params[:course])
       @course.save
       redirect to "/courses/#{@course.slug}"

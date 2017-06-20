@@ -1,9 +1,9 @@
-<h2>Edit Instructor</h2>
-<form action="/instructors/<%= @instructor.slug %>" method="POST" class="pure-form pure-form-aligned">
+<h2>Edit Student</h2>
+<form action="/students/<%= @student.slug %>" method="POST" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
             <label for="name">Name</label>
-            <input name="instructor[name]" type="text"  value="<%= @instructor.name %>">
+            <input name="student[name]" type="text"  value="<%= @student.name %>">
             <span class="pure-form-message-inline">This is a required field.</span>
         </div>
 
@@ -11,12 +11,12 @@
              <label for="courses">Courses</label>
                  <% Course.all.each do |c|  %>
                  <label> <%= c.title %></label>
-                 <input type="checkbox" name="instructor[course_ids][]" value="<%= c.id %>" <%= 'checked' if @instructor.courses.include?(c) %>>
+                 <input type="checkbox" name="student[course_ids][]" value="<%= c.id %>" <%= 'checked' if @student.courses.include?(c) %>>
              <% end %>
          </div>
 
       <div class="pure-controls">
-        <input type="submit" class="button-submit pure-button" value="Edit Instructor" />
+        <input type="submit" class="button-submit pure-button" value="Edit Student" />
       </div>
   </fieldset>
 </form>

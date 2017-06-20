@@ -39,13 +39,14 @@ class StudentsController < ApplicationController
   end
 
   #post route for an edited student
-  post '/students/:slug/' do
+  post '/students/:slug' do
     @student = Student.find_by_slug(params[:slug])
-    if params[:title].empty?
+    if params[:student][:name].empty?
       redirect to "/students/#{@student.slug}/edit"
     else
       @student.update(params[:student])
       @student.save
+      redirect to "/students/#{@student.slug}"
     end
   end
 

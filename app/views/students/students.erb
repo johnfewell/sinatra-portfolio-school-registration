@@ -5,6 +5,7 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th># of Courses</th>
             </tr>
           </thead>
           <tbody>
@@ -12,6 +13,9 @@
               <tr>
                 <td>
                   <a href="/students/<%= s.slug %>"><%= s.name %></a>
+                </td>
+                <td>
+                  <%= s.courses.count %>
                 </td>
               </tr>
             <% end %>

@@ -40,13 +40,14 @@ class InstructorsController < ApplicationController
     end
 
     #post route for an edited instructor
-    post '/instructors/:slug/' do
+    post '/instructors/:slug' do
       @instructor = Instructor.find_by_slug(params[:slug])
-      if params[:title].empty?
+      if params[:instructor][:name].empty?
         redirect to "/instructors/#{@instructor.slug}/edit"
       else
         @instructor.update(params[:instructor])
         @instructor.save
+        redirect to "/instructors/#{@instructor.slug}"
       end
     end
 
