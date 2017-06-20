@@ -7,6 +7,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "never_trust_the_ide"
   end
 
+
+
   get '/' do
     if logged_in?
       #this is ugly and i need to refactor

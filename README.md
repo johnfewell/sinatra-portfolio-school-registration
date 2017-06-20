@@ -104,5 +104,5 @@ controllers
 
 
 git add --all
-git commit -m "Done with course reg edit, done with instructors index"
+git commit -m "Done with single course view"
 git push origin master

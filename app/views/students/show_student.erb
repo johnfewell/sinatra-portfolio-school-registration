@@ -1,0 +1,25 @@
+<div id="main">
+  <h2>Student Name: <%= @student.name %></h2>
+  <h4>Instructors:</h4>
+  <ul>
+      <% @student.instructors.each do |i| %>
+      <li>
+        <a href="/instructors/<%= i.slug %>"><%= i.name %></a>
+      </li>
+      <% end %>
+  </ul>
+  <h4>Courses:</h4>
+  <ul>
+      <% @student.courses.each do |c| %>
+      <li>
+        <a href="/courses/<%= c.slug %>"><%= c.title %></a>
+      </li>
+      <% end %>
+  </ul>
+
+  <br />
+  <a class="pure-button" href="/students/<%= @student.slug %>/edit">Edit Student</a>
+  <a class="pure-button" href="/students/new">New Student</a>
+
+  </div>
+</div>

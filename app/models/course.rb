@@ -11,6 +11,7 @@ class Course <ActiveRecord::Base
     instructor.name.downcase.gsub(" ","-")
   end
 
+
   def self.find_by_slug(slug)
     Course.all.find{|u| u.slug == slug}
   end
