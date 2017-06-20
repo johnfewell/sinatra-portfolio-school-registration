@@ -104,5 +104,5 @@ controllers
 
 
 git add --all
-git commit -m "Done with single course view"
+git commit -m "Done with all three single views"
 git push origin master

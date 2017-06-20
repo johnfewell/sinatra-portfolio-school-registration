@@ -55,20 +55,23 @@ class CoursesController < ApplicationController
   end
 
   #post route for an edited course
-  post '/courses/:slug/' do
+  post '/courses/:slug' do
     @course = Course.find_by_slug(params[:slug])
-    if params[:title].empty?
+    if params[:course][:title].empty?
       redirect to "/courses/#{@course.slug}/edit"
     else
       @course.update(params[:course])
       @course.save
+      redirect to "/courses/#{@course.slug}"
     end
+
   end
 
   #post route for a new course
   post '/courses' do
     if !params[:title].empty?
       Course.create(params[:course])
+      redirect to "/courses/#{@course.slug}"
     else
       redirect to '/courses/new'
     end

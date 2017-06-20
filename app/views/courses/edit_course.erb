@@ -1,0 +1,57 @@
+<h2>Edit Course</h2>
+<form action="/courses/<%= @course.slug %>" method="POST" class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="title">Title</label>
+            <input id="title" name="course[title]" type="text"  value="<%= @course.title %>">
+            <span class="pure-form-message-inline">This is a required field.</span>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="weeks">Weeks</label>
+            <input id="weeks" name="course[weeks]" type="text" value="<%= @course.weeks %>">
+
+        </div>
+
+        <div class="pure-control-group">
+            <label for="year">Year</label>
+            <input id="year" name="course[year]" type="text" value="<%= @course.year %>">
+
+        </div>
+
+        <div class="pure-control-group">
+            <label for="semester">Semester</label>
+            <input id="semester" name="course[semester]" type="text" value="<%= @course.semester %>">
+
+        </div>
+
+        <div class="pure-control-group">
+            <label for="start_date">Start Date</label>
+            <input id="start_date" name="course[start_date]" type="text" value="<%= @course.start_date %>">
+
+        </div>
+
+        <div class="pure-control-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="course[description]" type="text" placeholder="<%= @course.description %>">
+            </textarea>
+        </div>
+
+        <div class="pure-control-group">
+             <label for="instructor">Instructor</label>
+             <select id="instructor" value="<%= @course.instructor %>" name="course[instructor_id]">
+               <% Instructor.all.each do |i|  %>
+                 <option>
+                   <%= i.name %>
+                 </option>
+               <% end %>
+               <option>
+               </option>
+             </select>
+         </div>
+
+      <div class="pure-controls">
+        <input type="submit" class="button-submit pure-button" value="Edit Course" />
+      </div>
+  </fieldset>
+</form>
