@@ -4,13 +4,6 @@ class CoursesController < ApplicationController
   get '/courses' do
 
     if logged_in?
-        #i really need to get rid of this
-      if Student.find(session[:user_id])
-        @stu_user = Student.find(session[:user_id])
-      else
-        @inst_user = Instructor.find(session[:user_id])
-      end
-
       erb :'/courses/courses'
     else
       redirect to '/'
@@ -26,7 +19,7 @@ class CoursesController < ApplicationController
 
   #create new course
   get '/courses/new' do
-    if logged_in?
+    if logged_in? && current_user.id == 9
       erb :'/courses/new_course'
     else
       redirect to '/'
@@ -56,16 +49,13 @@ class CoursesController < ApplicationController
 
   #edit single course
   get '/courses/:slug/edit' do
-    if logged_in?
-      #only allow if instructor to edit courses
+    if logged_in? && current_user.id == 9
       @course = Course.find_by_slug(params[:slug])
       erb :'/courses/edit_course'
     else
       redirect to '/'
     end
   end
-
-
 
   #post route for an edited course
   post '/courses/:slug' do
@@ -78,18 +68,14 @@ class CoursesController < ApplicationController
       @course.save
       redirect to "/courses/#{@course.slug}"
     end
-
   end
 
-
-
   #delete course
-  get '/tweets/:slug/delete' do
-    if logged_in?
+  get '/courses/:slug/delete' do
+    if logged_in? && current_user.id == 9
       @course = Course.find_by_slug(params[:slug])
-      #check if user is Instructor
-        @course.delete
-        redirect to '/courses'
+      @course.delete
+      redirect to '/courses'
     else
       redirect to '/'
     end

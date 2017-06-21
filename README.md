@@ -104,5 +104,5 @@ controllers
 
 
 git add --all
-git commit -m "Working on the three routes for new stuff"
+git commit -m "In the process of removing instructor login which does not work"
 git push origin master

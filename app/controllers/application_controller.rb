@@ -9,13 +9,6 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
-      #this is ugly and i need to refactor
-      if Student.find(session[:user_id])
-        @user = Student.find(session[:user_id])
-      else
-        @user = Instructor.find(session[:user_id])
-      end
-
       erb :'index'
     else
       erb :'index_logged_out'
@@ -23,12 +16,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/' do
-    if @user = Student.find_by(:email => params[:email])
-      @user = Student.find_by(:email => params[:email])
-    else
-      @user = Instructor.find_by(:email => params[:email])
-    end
-
+    @user = Student.find_by(:email => params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/"
