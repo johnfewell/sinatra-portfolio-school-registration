@@ -20,7 +20,7 @@ You can view all of the students at the school.
 #For my reference
 
 s = Student.first
-teach = Institute.first
+teach = Instructor.first
 c = Course.first
 
 s1 = Student.create(:name => "Seva", :email => "seva@test.com", :password => "test")
@@ -104,5 +104,5 @@ controllers
 
 
 git add --all
-git commit -m "In the process of removing instructor login which does not work"
+git commit -m "Removed instructor passwords, hardcoding admin ID into controllers and views"
 git push origin master

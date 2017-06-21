@@ -18,8 +18,10 @@
   </ul>
 
   <br />
-  <a class="pure-button" href="/instructors/<%= @instructor.slug %>/edit">Edit Instructor</a>
-  <a class="pure-button" href="/instructors/new">New Instructor</a>
+  <% if current_user.id == 9 %>
+    <a class="pure-button" href="/instructors/<%= @instructor.slug %>/edit">Edit Instructor</a>
+    <a class="pure-button" href="/instructors/new">New Instructor</a>
+    <a class="pure-button" href="/instructors/<%= @instructor.slug %>/delete">Delete Instructor</a>
+  <% end %>
 
-  </div>
 </div>

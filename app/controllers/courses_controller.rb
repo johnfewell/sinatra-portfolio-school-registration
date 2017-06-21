@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   get '/courses' do
 
     if logged_in?
+      binding.pry
       erb :'/courses/courses'
     else
       redirect to '/'

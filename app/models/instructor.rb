@@ -3,8 +3,6 @@ class Instructor <ActiveRecord::Base
   has_many :courses
   has_many :students, :through => :courses
 
-  has_secure_password
-
   def slug
     name.downcase.gsub(" ","-")
   end

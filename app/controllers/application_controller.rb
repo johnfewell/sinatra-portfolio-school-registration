@@ -9,6 +9,8 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
+      @user = current_user
+
       erb :'index'
     else
       erb :'index_logged_out'

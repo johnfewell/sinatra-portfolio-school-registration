@@ -8,10 +8,10 @@ class InstructorsController < ApplicationController
         redirect to '/'
       end
     end
-    
+
     #create new instructor
     get '/instructors/new' do
-      if logged_in?
+      if logged_in? && current_user.id == 9
         erb :'/instructors/new_instructor'
       else
         redirect to '/'
@@ -28,8 +28,6 @@ class InstructorsController < ApplicationController
       end
     end
 
-
-
     #post route for a new instructor
     post '/instructors/new' do
       if !params[:instructor][:name].empty?
@@ -43,7 +41,7 @@ class InstructorsController < ApplicationController
 
     #edit single instructor
     get '/instructors/:slug/edit' do
-      if logged_in?
+      if logged_in? && current_user.id == 9
         #only allow if instructor to edit instructors
         @instructor = Instructor.find_by_slug(params[:slug])
         erb :'/instructors/edit_instructor'
@@ -51,7 +49,6 @@ class InstructorsController < ApplicationController
         redirect to '/'
       end
     end
-
 
     #post route for an edited instructor
     post '/instructors/:slug' do
@@ -65,11 +62,9 @@ class InstructorsController < ApplicationController
       end
     end
 
-
-
     #delete instructor
-    get '/tweets/:slug/delete' do
-      if logged_in?
+    get '/instructors/:slug/delete' do
+      if logged_in? && current_user.id == 9
         @instructor = Instructor.find_by_slug(params[:slug])
         #check if user is Instructor
           @instructor.delete

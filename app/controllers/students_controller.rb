@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
 
   #create new student
   get '/students/new' do
-    if logged_in?
+    if logged_in? && current_user.id == 9
       erb :'/students/new_student'
     else
       redirect to '/'
@@ -40,7 +40,6 @@ class StudentsController < ApplicationController
     end
   end
 
-
   #post route for an edited student
   post '/students/:slug' do
     @student = Student.find_by_slug(params[:slug])
@@ -56,17 +55,23 @@ class StudentsController < ApplicationController
   #edit single student
   get '/students/:slug/edit' do
     if logged_in?
-      #only allow if instructor to edit students
       @student = Student.find_by_slug(params[:slug])
-      erb :'/students/edit_student'
+      if @student.id == current_user.id
+        erb :'/students/edit_student'
+      elsif
+        current_user.id == 9
+        erb :'/students/edit_student'
+      else
+        redirect to '/students'
+      end
     else
       redirect to '/'
     end
   end
 
   #delete student
-  get '/tweets/:slug/delete' do
-    if logged_in?
+  get '/students/:slug/delete' do
+    if logged_in? && current_user.id == 9
       @student = Student.find_by_slug(params[:slug])
       #check if user is Instructor
       @student.delete

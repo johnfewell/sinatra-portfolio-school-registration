@@ -15,7 +15,7 @@
   </head>
   <body>
     <div id="wrapper">
-    
+       <% if logged_in? %>
       <div class="pure-menu custom-restricted-width">
           <span class="pure-menu-heading">Menu</span>
 
@@ -27,7 +27,7 @@
               <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
           </ul>
       </div>
-
+       <% end %>
       <%= yield %>
     </div>
   </body>
