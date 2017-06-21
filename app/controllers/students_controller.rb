@@ -1,10 +1,32 @@
 class StudentsController < ApplicationController
+
   #show all students
   get '/students' do
     if logged_in?
       erb :'/students/students'
     else
       redirect to '/'
+    end
+  end
+
+  #create new student
+  get '/students/new' do
+    if logged_in?
+      erb :'/students/new_student'
+    else
+      redirect to '/'
+    end
+  end
+
+  #post route for a new student
+  post '/students/new' do
+    if !params[:student][:name].empty?
+      binding.pry
+      @student = Student.create(params[:student])
+      @student.save
+      redirect to "/students/#{@student.slug}"
+    else
+      redirect to '/students/new'
     end
   end
 
@@ -19,26 +41,6 @@ class StudentsController < ApplicationController
   end
 
 
-
-  #create new student
-  get '/students/new' do
-    if logged_in?
-      erb :'/students/new_student'
-    else
-      redirect to '/'
-    end
-  end
-
-  #post route for a new student
-  post '/students/new' do
-    if !params[:student][:name].empty?
-      @student = Student.create(params[:student])
-      @student.save
-      redirect to "/students/#{@student.slug}"
-    else
-      redirect to '/students/new'
-    end
-  end
   #post route for an edited student
   post '/students/:slug' do
     @student = Student.find_by_slug(params[:slug])

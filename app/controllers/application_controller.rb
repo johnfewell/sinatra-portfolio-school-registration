@@ -7,8 +7,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "never_trust_the_ide"
   end
 
-
-
   get '/' do
     if logged_in?
       #this is ugly and i need to refactor
@@ -26,6 +24,7 @@ class ApplicationController < Sinatra::Base
 
   post '/' do
     if @user = Student.find_by(:email => params[:email])
+      @user = Student.find_by(:email => params[:email])
     else
       @user = Instructor.find_by(:email => params[:email])
     end
@@ -70,12 +69,7 @@ class ApplicationController < Sinatra::Base
      end
 
      def current_user
-       if Student.find(session[:user_id])
          @user = Student.find(session[:user_id])
-       else
-         @user = Instructor.find(session[:user_id])
-       end
      end
-
    end
 end

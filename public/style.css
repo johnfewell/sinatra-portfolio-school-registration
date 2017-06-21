@@ -34,6 +34,10 @@ body {
   background: #f7f7f7;
 }
 
+#checkboxes-edit { max-width: 600px;
+}
+
+
 #inner {
   display: table;
   margin: 0 auto;

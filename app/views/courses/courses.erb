@@ -1,7 +1,12 @@
   <div id="main">
 
     <form action="/courses" method="POST">
-      <h3>Register for classes</h3>
+      <h3>Register for Courses</h3>
+        <% if @stu_user %>
+          <h4><%= @stu_user.name %>, you can register for courses or change your registration by selecting the checkboxes below.</h4>
+          <% else %>
+          <h4><%= @inst_user.name %>, you can't register for classes here because you are an instructor.</h4>
+        <% end %>
       <div id="table-wrapper">
         <table class="pure-table pure-table-bordered">
           <thead>
@@ -52,10 +57,10 @@
           </tbody>
         </table>
         <br />
-        <% if !@inst_user %>
-         <center>
-           <input type="submit" class="button-submit pure-button" value="Edit Registration" />
-         </center>
+        <% if @inst_user %>
+          <a class="pure-button" href="/courses/new">New Course</a>
+        <% else %>
+          <input type="submit" class="button-submit pure-button" value="Edit Registration" />
         <% end %>
       </form>
     </div>

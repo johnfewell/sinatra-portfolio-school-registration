@@ -1,47 +1,23 @@
 <h2>New Instructor</h2>
-<form action="/courses/new" method="POST" class="pure-form pure-form-aligned">
+<form action="/instructors/new" method="POST" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
-            <label for="title">Title</label>
-            <input name="course[title]" type="text" >
+            <label for="name">Name</label>
+            <input name="instructor[name]" type="text" >
             <span class="pure-form-message-inline">This is a required field.</span>
         </div>
 
         <div class="pure-control-group">
-            <label for="weeks">Weeks</label>
-            <input name="course[weeks]" type="text">
-
+            <label for="email">Email</label>
+            <input name="instructor[email]" type="email" >
+            <span class="pure-form-message-inline">This is a required field.</span>
         </div>
 
         <div class="pure-control-group">
-            <label for="year">Year</label>
-            <input name="course[year]" type="text">
-
-        </div>
-
-        <div class="pure-control-group">
-            <label for="semester">Semester</label>
-            <input name="course[semester]" type="text">
-
-        </div>
-
-        <div class="pure-control-group">
-            <label for="start_date">Start Date</label>
-            <input name="course[start_date]" type="text">
-
-        </div>
-
-        <div class="pure-control-group">
-            <label for="description">Description</label>
-            <input name="course[description]" type="text">
-            </input>
-        </div>
-
-        <div class="pure-control-group">
-             <label for="instructor">Instructor</label>
-                 <% Instructor.all.each do |i|  %>
-                 <label> <%= i.name %></label>
-                 <input type="radio" name="course[instructor_id]" value="<%= i.id %>"> 
+             <label for="course">Courses</label>
+                 <% Course.all.each do |c|  %>
+                 <label> <%= c.title %></label>
+                 <input type="checkbox" name="instructor[course_ids][]" value="<%= c.id %>">
              <% end %>
          </div>
 

@@ -2,16 +2,28 @@
 <form action="/students/new" method="POST" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
-            <label for="title">Title</label>
-            <input name="course[title]" type="text" >
+            <label for="name">Name</label>
+            <input name="student[name]" type="text" >
             <span class="pure-form-message-inline">This is a required field.</span>
         </div>
 
         <div class="pure-control-group">
-             <label for="courses">Course</label>
-                 <% Course.all.each do |i|  %>
-                 <label> <%= i.name %></label>
-                 <input type="radio" name="course[instructor_id]" value="<%= i.id %>"> 
+            <label for="email">Email</label>
+            <input name="student[email]" type="email" >
+            <span class="pure-form-message-inline">This is a required field.</span>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password">Password</label>
+            <input name="student[password]" type="password" >
+            <span class="pure-form-message-inline">This is a required field.</span>
+        </div>
+
+        <div class="pure-control-group">
+             <label for="students">Course</label>
+                 <% Course.all.each do |c|  %>
+                 <label> <%= c.title %></label>
+                 <input type="checkbox" name="student[course_ids][]" value="<%= c.id %>">
              <% end %>
          </div>
 

@@ -2,7 +2,7 @@
   <h2>Student Name: <%= @student.name %></h2>
   <h4>Instructors:</h4>
   <ul>
-      <% @student.instructors.each do |i| %>
+      <% @student.instructors.uniq.each do |i| %>
       <li>
         <a href="/instructors/<%= i.slug %>"><%= i.name %></a>
       </li>
