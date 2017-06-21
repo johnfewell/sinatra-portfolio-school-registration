@@ -27,7 +27,10 @@
               <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
           </ul>
       </div>
-       <% end %>
+      <% end %>
+      <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+      <% end %>
       <%= yield %>
     </div>
   </body>
