@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
     if logged_in?
       erb :'/courses/courses'
     else
+      flash[:message] = "Please log in first."
       redirect to '/'
     end
   end
@@ -14,6 +15,7 @@ class CoursesController < ApplicationController
     @user = Student.find(session[:user_id])
     @user.update(params[:student])
     @user.save
+    flash[:message] = "Successfully updated your registration."
     redirect to '/'
   end
 
@@ -22,6 +24,7 @@ class CoursesController < ApplicationController
     if logged_in? && current_user.id == 9
       erb :'/courses/new_course'
     else
+      flash[:message] = "You aren't allowed to do that."
       redirect to '/'
     end
   end
@@ -33,6 +36,7 @@ class CoursesController < ApplicationController
       @course.save
       redirect to "/courses/#{@course.slug}"
     else
+      flash[:message] = "Courses require a name."
       redirect to '/courses/new'
     end
   end
@@ -43,6 +47,7 @@ class CoursesController < ApplicationController
       @course = Course.find_by_slug(params[:slug])
       erb :'/courses/show_course'
     else
+      flash[:message] = "You aren't allowed to view that."
       redirect to '/'
     end
   end
@@ -53,6 +58,7 @@ class CoursesController < ApplicationController
       @course = Course.find_by_slug(params[:slug])
       erb :'/courses/edit_course'
     else
+      flash[:message] = "You aren't allowed to do that."
       redirect to '/'
     end
   end
@@ -61,11 +67,12 @@ class CoursesController < ApplicationController
   post '/courses/:slug' do
     @course = Course.find_by_slug(params[:slug])
     if params[:course][:title].empty?
+      flash[:message] = "Courses require a name."
       redirect to "/courses/#{@course.slug}/edit"
     else
-
       @course.update(params[:course])
       @course.save
+      flash[:message] = "Course successfully edited."
       redirect to "/courses/#{@course.slug}"
     end
   end
@@ -74,9 +81,11 @@ class CoursesController < ApplicationController
   get '/courses/:slug/delete' do
     if logged_in? && current_user.id == 9
       @course = Course.find_by_slug(params[:slug])
+      flash[:message] = "#{@course.title} deleted."
       @course.delete
       redirect to '/courses'
     else
+      flash[:message] = "You aren't allowed to do that."
       redirect to '/'
     end
   end

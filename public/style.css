@@ -22,6 +22,15 @@ a:hover { color: #D80649; text-decoration: none; }
 
 }
 
+h3.flash-success {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+
+
 /* Clearfix */
 
 .cf:before,

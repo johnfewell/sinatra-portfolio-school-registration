@@ -28,9 +28,13 @@
           </ul>
       </div>
       <% end %>
-      <% if flash.has?(:message) %>
-        <%= flash[:message] %>
-      <% end %>
+      <div id="main">
+          <% if flash.has?(:message) %>
+            <h3 class="flash-success">
+              <%= flash[:message] %>
+            </h3>
+          <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>
