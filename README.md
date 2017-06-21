@@ -104,5 +104,5 @@ controllers
 
 
 git add --all
-git commit -m "Done with all three single views"
+git commit -m "Working on the three routes for new stuff"
 git push origin master

@@ -24,6 +24,26 @@ class CoursesController < ApplicationController
     redirect to '/'
   end
 
+  #create new course
+  get '/courses/new' do
+    if logged_in?
+      erb :'/courses/new_course'
+    else
+      redirect to '/'
+    end
+  end
+
+  #post route for a new course
+  post '/courses/new' do
+    if !params[:course][:title].empty?
+      @course = Course.create(params[:course])
+      @course.save
+      redirect to "/courses/#{@course.slug}"
+    else
+      redirect to '/courses/new'
+    end
+  end
+
   #show single courses
   get '/courses/:slug' do
     if logged_in?
@@ -45,14 +65,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  #create new course
-  get '/courses/new' do
-    if logged_in?
-      erb :'/courses/new_course'
-    else
-      redirect to '/'
-    end
-  end
+
 
   #post route for an edited course
   post '/courses/:slug' do
@@ -60,7 +73,7 @@ class CoursesController < ApplicationController
     if params[:course][:title].empty?
       redirect to "/courses/#{@course.slug}/edit"
     else
-      
+
       @course.update(params[:course])
       @course.save
       redirect to "/courses/#{@course.slug}"
@@ -68,15 +81,7 @@ class CoursesController < ApplicationController
 
   end
 
-  #post route for a new course
-  post '/courses' do
-    if !params[:title].empty?
-      Course.create(params[:course])
-      redirect to "/courses/#{@course.slug}"
-    else
-      redirect to '/courses/new'
-    end
-  end
+
 
   #delete course
   get '/tweets/:slug/delete' do

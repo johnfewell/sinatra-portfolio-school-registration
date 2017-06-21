@@ -8,6 +8,15 @@ class InstructorsController < ApplicationController
         redirect to '/'
       end
     end
+    
+    #create new instructor
+    get '/instructors/new' do
+      if logged_in?
+        erb :'/instructors/new_instructor'
+      else
+        redirect to '/'
+      end
+    end
 
     #show single instructors
     get '/instructors/:slug' do
@@ -16,6 +25,19 @@ class InstructorsController < ApplicationController
         erb :'/instructors/show_instructor'
       else
         redirect to '/'
+      end
+    end
+
+
+
+    #post route for a new instructor
+    post '/instructors/new' do
+      if !params[:instructor][:name].empty?
+        @instructor = Instructor.create(params[:instructor])
+        @instructor.save
+        redirect to "/instructors/#{@instructor.slug}"
+      else
+        redirect to '/instructors/new'
       end
     end
 
@@ -30,14 +52,6 @@ class InstructorsController < ApplicationController
       end
     end
 
-    #create new instructor
-    get '/instructors/new' do
-      if logged_in?
-        erb :'/instructors/new_instructor'
-      else
-        redirect to '/'
-      end
-    end
 
     #post route for an edited instructor
     post '/instructors/:slug' do
@@ -51,14 +65,7 @@ class InstructorsController < ApplicationController
       end
     end
 
-    #post route for a new instructor
-    post '/instructors' do
-      if !params[:title].empty?
-        Instructor.create(params[:instructor])
-      else
-        redirect to '/instructors/new'
-      end
-    end
+
 
     #delete instructor
     get '/tweets/:slug/delete' do
