@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
 
   #create new course
   get '/courses/new' do
-    if logged_in? && current_user.id == 9
+    if logged_in? && is_admin?
       erb :'/courses/new_course'
     else
       flash[:message] = "You aren't allowed to do that."
@@ -34,6 +34,7 @@ class CoursesController < ApplicationController
     if !params[:course][:title].empty?
       @course = Course.create(params[:course])
       @course.save
+      flash[:message] = "#{@course.title} created."
       redirect to "/courses/#{@course.slug}"
     else
       flash[:message] = "Courses require a name."
@@ -54,7 +55,7 @@ class CoursesController < ApplicationController
 
   #edit single course
   get '/courses/:slug/edit' do
-    if logged_in? && current_user.id == 9
+    if logged_in? && is_admin?
       @course = Course.find_by_slug(params[:slug])
       erb :'/courses/edit_course'
     else
@@ -72,14 +73,14 @@ class CoursesController < ApplicationController
     else
       @course.update(params[:course])
       @course.save
-      flash[:message] = "Course successfully edited."
+      flash[:message] = "#{@course.title} successfully edited."
       redirect to "/courses/#{@course.slug}"
     end
   end
 
   #delete course
   get '/courses/:slug/delete' do
-    if logged_in? && current_user.id == 9
+    if logged_in? && is_admin?
       @course = Course.find_by_slug(params[:slug])
       flash[:message] = "#{@course.title} deleted."
       @course.delete

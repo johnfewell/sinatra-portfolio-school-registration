@@ -61,6 +61,10 @@ class ApplicationController < Sinatra::Base
        !!session[:user_id]
      end
 
+     def is_admin?
+       session[:user_id] == 9
+     end
+
      def current_user
          @user = Student.find(session[:user_id])
      end

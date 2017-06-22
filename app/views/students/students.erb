@@ -1,29 +1,29 @@
-  <div id="main">
-      <h3>Students</h3>
-      <div id="table-wrapper">
-        <table class="pure-table pure-table-bordered">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th># of Courses</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% Student.all.each do |s|  %>
-              <tr>
-                <td>
-                  <a href="/students/<%= s.slug %>"><%= s.name %></a>
-                </td>
-                <td>
-                  <%= s.courses.count %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <br />
-        <% if current_user.id == 9 %>
-          <a class="pure-button" href="/students/new">New Student</a>
+<h3>Students</h3>
+  <div id="table-wrapper">
+    <table class="pure-table pure-table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th># of Courses</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Student.all.each do |s|  %>
+        <% if s.id != 9 %>
+          <tr>
+            <td>
+              <a href="/students/<%= s.slug %>"><%= s.name %></a>
+            </td>
+            <td>
+              <%= s.courses.count %>
+            </td>
+          </tr>
+          <% end %>
         <% end %>
-    </div>
-  </div>
+      </tbody>
+    </table>
+    <br />
+    <% if current_user.id == 9 %>
+      <a class="pure-button" href="/students/new">New Student</a>
+    <% end %>
+</div>

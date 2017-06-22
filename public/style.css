@@ -13,23 +13,36 @@ a { color: #f20553; text-decoration: none; }
 
 a:hover { color: #D80649; text-decoration: none; }
 
-.button-submit {
-  font-size: 125% !important;
-  color: white !important;
-  border-radius: 4px !important;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
-  background: rgb(66, 184, 221) !important;
-
-}
-
-h3.flash-success {
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
     color: white;
-    border-radius: 4px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    background: rgb(28, 184, 65); /* this is a green */
+    margin-bottom: 15px;
+    max-width: 600px;
 }
 
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+.custom-restricted-width {
+  padding-right: 50px;
+  padding-top: 30px;
+  padding-left: 40px;
+}
 
 /* Clearfix */
 
@@ -52,9 +65,11 @@ body {
   margin: 0 auto;
 }
 
-
-#main { margin-left: 200px; }
-
 #table-wrapper { float: left;
   margin: auto;
  }
+
+#main {
+  margin-left: 200px;
+
+}

@@ -9,13 +9,13 @@
 
         <div class="pure-control-group">
             <label for="weeks">Weeks</label>
-            <input name="course[weeks]" type="text">
+            <input name="course[weeks]" type="number">
 
         </div>
 
         <div class="pure-control-group">
             <label for="year">Year</label>
-            <input name="course[year]" type="text">
+            <input name="course[year]" type="number">
 
         </div>
 
@@ -41,12 +41,12 @@
              <label for="instructor">Instructor</label>
                  <% Instructor.all.each do |i|  %>
                  <label> <%= i.name %></label>
-                 <input type="radio" name="course[instructor_id]" value="<%= i.id %>"> 
+                 <input type="radio" name="course[instructor_id]" value="<%= i.id %>">
              <% end %>
          </div>
 
       <div class="pure-controls">
-        <input type="submit" class="button-submit pure-button" value="New Course" />
+        <input type="submit" class="button-submit pure-button" value="Create Course" />
       </div>
   </fieldset>
 </form>
