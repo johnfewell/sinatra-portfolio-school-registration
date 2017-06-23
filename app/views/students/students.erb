@@ -8,8 +8,8 @@
         </tr>
       </thead>
       <tbody>
-        <% Student.all.each do |s|  %>
-        <% if s.id != 9 %>
+        <% Student.all.each do |s| %>
+        <% if s.id != admin_id %>
           <tr>
             <td>
               <a href="/students/<%= s.slug %>"><%= s.name %></a>

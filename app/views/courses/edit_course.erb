@@ -48,7 +48,7 @@
          <div class="pure-control-group">
               <label for="students">Students</label>
                   <% Student.all.each do |s|  %>
-                    <% if s.id != 9 %>
+                    <% if s.id != admin_id %>
                       <label> <%= s.name %></label>
                       <input type="checkbox" name="course[student_ids][]" value="<%= s.id %>" <%= 'checked' if @course.students.ids == s.id %>>
                     <% end %>

@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
 
   #create new course
   get '/courses/new' do
-    if logged_in? && is_admin?
+    if is_admin?
       erb :'/courses/new_course'
     else
       flash[:message] = "You aren't allowed to do that."

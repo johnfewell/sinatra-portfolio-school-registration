@@ -12,7 +12,7 @@ class InstructorsController < ApplicationController
 
     #create new instructor
     get '/instructors/new' do
-    if logged_in? && is_admin?
+    if is_admin?
         erb :'/instructors/new_instructor'
       else
         flash[:message] = "You aren't allowed to do that."
@@ -46,7 +46,7 @@ class InstructorsController < ApplicationController
 
     #edit single instructor
     get '/instructors/:slug/edit' do
-    if logged_in? && is_admin?
+    if is_admin?
         #only allow if instructor to edit instructors
         @instructor = Instructor.find_by_slug(params[:slug])
         erb :'/instructors/edit_instructor'
@@ -72,7 +72,7 @@ class InstructorsController < ApplicationController
 
     #delete instructor
     get '/instructors/:slug/delete' do
-    if logged_in? && is_admin?
+    if is_admin?
         @instructor = Instructor.find_by_slug(params[:slug])
         flash[:message] = "#{@instructor.name} deleted."
         @instructor.delete
