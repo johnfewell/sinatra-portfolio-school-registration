@@ -1,6 +1,6 @@
 <form action="/courses" method="POST">
   <h3>Register for Courses</h3>
-    <% if current_user.id != 9 %>
+    <% if !is_admin? %>
       <h4><%= current_user.name %>, you can register for courses or change your registration by selecting the checkboxes below.</h4>
       <% else %>
       <h4><%= current_user.name %>, you can't register for classes here because you are the admin.</h4>
