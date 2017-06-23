@@ -1,4 +1,4 @@
-<h2>Edit Course</h2>
+<h1>Edit Course</h1>
 <form action="/courses/<%= @course.slug %>" method="POST" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
@@ -41,19 +41,9 @@
              <label for="instructor">Instructor</label>
                  <% Instructor.all.each do |i|  %>
                  <label> <%= i.name %></label>
-                 <input type="radio" name="course[instructor_id]" value="<%= i.id %>" <%= 'checked' if @course.instructor_id == i.id %>>
+                 <input type="radio" name="course[instructor_id]" value="<%= i.id %>" <%= 'checked' if @course.instructor.id == i.id %>>
              <% end %>
          </div>
-
-         <div class="pure-control-group">
-              <label for="students">Students</label>
-                  <% Student.all.each do |s|  %>
-                    <% if s.id != admin_id %>
-                      <label> <%= s.name %></label>
-                      <input type="checkbox" name="course[student_ids][]" value="<%= s.id %>" <%= 'checked' if @course.students.ids == s.id %>>
-                    <% end %>
-              <% end %>
-          </div>
 
       <div class="pure-controls">
         <input type="submit" class="button-submit pure-button" value="Edit Course" />
