@@ -45,6 +45,16 @@
              <% end %>
          </div>
 
+         <div class="pure-control-group">
+              <label for="students">Students</label>
+                  <% Student.all.each do |s|  %>
+                    <% if s.id != admin_id %>
+                      <label> <%= s.name %></label>
+                      <input type="checkbox" name="course[student_ids][]" value="<%= s.id %>">
+                    <% end %>
+              <% end %>
+          </div>
+
       <div class="pure-controls">
         <input type="submit" class="button-submit pure-button" value="Create Course" />
       </div>
