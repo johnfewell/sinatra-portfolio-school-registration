@@ -6,6 +6,10 @@
     <p>
     You are curerntly not registered for any classes. Sign up for some on the Classes page.
     </p>
+    <% elsif is_admin? %>
+    <p>
+      You are the admin. Administrate already.
+    </p>
     <% else %>
     <h3>You are currently enrolled in:</h3>
     <table class="pure-table pure-table-bordered">
