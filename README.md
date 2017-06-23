@@ -19,5 +19,5 @@ You can view all of the students at the school.
 
 
 git add --all
-git commit -m "Removed instructor passwords, hardcoding admin ID into controllers and views"
+git commit -m "Added message for admin to index."
 git push origin master
