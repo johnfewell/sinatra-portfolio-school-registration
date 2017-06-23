@@ -2,13 +2,13 @@
   <h1>School Registration</h1>
   <h2>Hello, <%= current_user.name %></h2>
 
-  <% if current_user.courses.empty? %>
-    <p>
-    You are curerntly not registered for any classes. Sign up for some on the Classes page.
-    </p>
-    <% elsif is_admin? %>
+  <% if is_admin? %>
     <p>
       You are the admin. Administrate already.
+    </p>
+    <% elsif current_user.courses.empty? %>
+    <p>
+      You are curerntly not registered for any classes. Sign up for some on the Classes page.
     </p>
     <% else %>
     <h3>You are currently enrolled in:</h3>
