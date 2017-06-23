@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
     if logged_in?
       erb :'/students/students'
     else
-      flash[:message] = "Please log in first."
+      login_flash
       redirect to '/'
     end
   end
@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
     if logged_in? && is_admin?
       erb :'/students/new_student'
     else
-      flash[:message] = "You aren't allowed to do that."
+      not_allowed_flash
       redirect to '/'
     end
   end
@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
       flash[:message] = "#{@student.name} created."
       redirect to "/students/#{@student.slug}"
     else
-      flash[:message] = "Students require a name."
+      name_require_flash
       redirect to '/students/new'
     end
   end
@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
       @student = Student.find_by_slug(params[:slug])
       erb :'/students/show_student'
     else
-      flash[:message] = "Please log in first."
+      login_flash
       redirect to '/'
     end
   end
@@ -48,7 +48,7 @@ class StudentsController < ApplicationController
   post '/students/:slug' do
     @student = Student.find_by_slug(params[:slug])
     if params[:student][:name].empty?
-      flash[:message] = "Students require a name."
+      name_require_flash
       redirect to "/students/#{@student.slug}/edit"
     else
       @student.update(params[:student])
@@ -65,13 +65,13 @@ class StudentsController < ApplicationController
       if @student.id == current_user.id
         erb :'/students/edit_student'
       elsif is_admin?
-          erb :'/students/edit_student'
+        erb :'/students/edit_student'
       else
-        flash[:message] = "You aren't allowed to do that."
+        not_allowed_flash
         redirect to '/students'
       end
     else
-      flash[:message] = "Please log in first."
+      login_flash
       redirect to '/'
     end
   end
@@ -84,7 +84,7 @@ class StudentsController < ApplicationController
       @student.delete
       redirect to '/students'
     else
-      flash[:message] = "You aren't allowed to do that."
+      not_allowed_flash
       redirect to '/'
     end
   end

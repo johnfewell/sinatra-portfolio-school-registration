@@ -5,7 +5,7 @@ class InstructorsController < ApplicationController
       if logged_in?
         erb :'/instructors/instructors'
       else
-        flash[:message] = "Please log in first."
+        login_flash
         redirect to '/'
       end
     end
@@ -15,7 +15,7 @@ class InstructorsController < ApplicationController
     if is_admin?
         erb :'/instructors/new_instructor'
       else
-        flash[:message] = "You aren't allowed to do that."
+        not_allowed_flash
         redirect to '/'
       end
     end
@@ -26,7 +26,7 @@ class InstructorsController < ApplicationController
         @instructor = Instructor.find_by_slug(params[:slug])
         erb :'/instructors/show_instructor'
       else
-        flash[:message] = "Please log in first."
+        login_flash
         redirect to '/'
       end
     end
@@ -39,7 +39,7 @@ class InstructorsController < ApplicationController
         flash[:message] = "#{@instructor.name} created."
         redirect to "/instructors/#{@instructor.slug}"
       else
-        flash[:message] = "Instructors require a name."
+        name_require_flash
         redirect to '/instructors/new'
       end
     end
@@ -47,11 +47,10 @@ class InstructorsController < ApplicationController
     #edit single instructor
     get '/instructors/:slug/edit' do
     if is_admin?
-        #only allow if instructor to edit instructors
         @instructor = Instructor.find_by_slug(params[:slug])
         erb :'/instructors/edit_instructor'
       else
-        flash[:message] = "You aren't allowed to do that."
+        not_allowed_flash
         redirect to '/'
       end
     end
@@ -78,7 +77,7 @@ class InstructorsController < ApplicationController
         @instructor.delete
         redirect to '/instructors'
       else
-        flash[:message] = "You aren't allowed to do that."
+        not_allowed_flash
         redirect to '/'
       end
     end

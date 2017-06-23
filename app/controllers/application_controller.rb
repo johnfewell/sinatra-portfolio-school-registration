@@ -65,8 +65,21 @@ class ApplicationController < Sinatra::Base
        session[:user_id] == admin_id
      end
 
+     #Set the ID of the admin user here
      def admin_id
        9
+     end
+
+     def login_flash
+       flash[:message] = "Please log in first."
+     end
+
+     def not_allowed_flash
+       flash[:message] = "You aren't allowed to do that."
+     end
+
+     def name_require_flash
+       flash[:message] = "A name is required."
      end
 
      def current_user
