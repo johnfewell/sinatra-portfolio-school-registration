@@ -14,7 +14,7 @@ rake db:seed '''
 
 ## License
 
-See [LICENSE.txt](LICENSE) file.
+See [LICENSE](LICENSE.txt) file.
 
 ## Developing and Contributing
 
