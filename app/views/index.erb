@@ -1,56 +1,54 @@
-<div id="table-wrapper">
-  <h1>School Registration</h1>
-  <h2>Hello, <%= current_user.name %></h2>
+<h1>School Registration</h1>
+<h2>Hello, <%= current_user.name %></h2>
 
-  <% if is_admin? %>
-    <p>
-      You are the admin. Administrate already.
-    </p>
-    <% elsif current_user.courses.empty? %>
-    <p>
-      You are curerntly not registered for any classes. Sign up for some on the Classes page.
-    </p>
-    <% else %>
-    <h3>You are currently enrolled in:</h3>
-    <table class="pure-table pure-table-bordered">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Instructor</th>
-          <th>Start Date</th>
-          <th>Semester</th>
-          <th>Weeks</th>
-          <th>Year</th>
-        </tr>
-    </thead>
-    <tbody>
-      <% @user.courses.each do |c| %>
+<% if is_admin? %>
+  <p>
+    You are the admin. Administrate already.
+  </p>
+  <% elsif current_user.courses.empty? %>
+  <p>
+    You are curerntly not registered for any classes. Sign up for some on the Classes page.
+  </p>
+  <% else %>
+  <h3>You are currently enrolled in:</h3>
+  <table class="pure-table pure-table-bordered">
+    <thead>
       <tr>
-        <td>
-          <%= c.title %>
-        </td>
-        <td>
-          <% if !c.instructor_id? %>
-            <%= "Instructor Unassigned" %>
-          <% else %>
-            <%= c.instructor.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= c.start_date %>
-        </td>
-        <td>
-          <%= c.semester %>
-        </td>
-        <td>
-          <%= c.weeks %>
-        </td>
-        <td>
-          <%= c.year %>
-        </td>
+        <th>Title</th>
+        <th>Instructor</th>
+        <th>Start Date</th>
+        <th>Semester</th>
+        <th>Weeks</th>
+        <th>Year</th>
       </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <% end %>
-</div>
+  </thead>
+  <tbody>
+    <% @user.courses.each do |c| %>
+    <tr>
+      <td>
+        <%= c.title %>
+      </td>
+      <td>
+        <% if !c.instructor_id? %>
+          <%= "Instructor Unassigned" %>
+        <% else %>
+          <%= c.instructor.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= c.start_date %>
+      </td>
+      <td>
+        <%= c.semester %>
+      </td>
+      <td>
+        <%= c.weeks %>
+      </td>
+      <td>
+        <%= c.year %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

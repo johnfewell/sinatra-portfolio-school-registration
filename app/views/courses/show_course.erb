@@ -18,7 +18,7 @@
         <% end %>
     </ul>
     <br />
-    <% if current_user.id == 9 %>
+    <% if is_admin? %>
       <a class="pure-button" href="/courses/<%= @course.slug %>/edit">Edit Course</a>
       <a class="pure-button" href="/courses/new">New Course</a>
       <a class="pure-button" href="/courses/<%= @course.slug %>/delete">Delete Course</a>

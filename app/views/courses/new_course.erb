@@ -9,13 +9,13 @@
 
         <div class="pure-control-group">
             <label for="weeks">Weeks</label>
-            <input name="course[weeks]" type="text">
+            <input name="course[weeks]" type="number">
 
         </div>
 
         <div class="pure-control-group">
             <label for="year">Year</label>
-            <input name="course[year]" type="text">
+            <input name="course[year]" type="number">
 
         </div>
 
@@ -45,8 +45,18 @@
              <% end %>
          </div>
 
+         <div class="pure-control-group">
+              <label for="students">Students</label>
+                  <% Student.all.each do |s|  %>
+                    <% if s.id != admin_id %>
+                      <label> <%= s.name %></label>
+                      <input type="checkbox" name="course[student_ids][]" value="<%= s.id %>">
+                    <% end %>
+              <% end %>
+          </div>
+
       <div class="pure-controls">
-        <input type="submit" class="button-submit pure-button" value="New Course" />
+        <input type="submit" class="button-submit pure-button" value="Create Course" />
       </div>
   </fieldset>
 </form>
