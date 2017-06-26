@@ -8,6 +8,12 @@
         </div>
 
         <div class="pure-control-group">
+            <label for="email">Email</label>
+            <input name="instructor[email]" type="email"  value="<%= @instructor.email %>>
+            <span class="pure-form-message-inline">This is a required field.</span>
+        </div>
+
+        <div class="pure-control-group">
              <label for="courses">Courses</label>
                  <% Course.all.each do |c|  %>
                  <label> <%= c.title %></label>

@@ -1,5 +1,6 @@
 <div id="main">
   <h1>Instructor Name: <%= @instructor.name %></h1>
+  <h3>Email: <%= @instructor.email %> </h3>
   <h4>Students:</h4>
   <ul>
       <% @instructor.students.uniq.each do |s| %>

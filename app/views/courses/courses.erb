@@ -57,7 +57,7 @@
           </tbody>
         </table>
         <br />
-        <% if !is_admin? %>
+        <% if is_admin? %>
           <a class="pure-button" href="/courses/new">New Course</a>
         <% else %>
           <input type="submit" class="button-submit pure-button" value="Edit Registration" />
