@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     if params.any? { |k, v| v.length <=2 }
-      flash[:message] = "Your name or password must be longer than two characters."
+      short_flash
       redirect to '/signup'
     else
       @user = Student.new(:name => params[:name], :email => params[:email], :password => params[:password])
@@ -58,6 +58,17 @@ class ApplicationController < Sinatra::Base
 
   get '/profile' do
     erb :'/users/profile'
+  end
+
+  post '/profile' do
+    if params.any? { |k, v| v.length <=2 }
+      short_flash
+      redirect to '/profile'
+    else
+      current_user.update(params[:student])
+      current_user.save
+      redirect to '/'
+    end
   end
 
   helpers do
@@ -76,6 +87,10 @@ class ApplicationController < Sinatra::Base
 
      def login_flash
        flash[:message] = "Please log in first."
+     end
+
+     def short_flash
+       flash[:message] = "Your name or password must be longer than two characters."
      end
 
      def not_allowed_flash

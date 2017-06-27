@@ -1,0 +1,23 @@
+<h1>Edit Profile</h1>
+<form action="/profile" method="POST" class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Name</label>
+            <input name="student[name]" type="text"  value="<%= current_user.name %>">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">Email</label>
+            <input name="student[email]" type="email"  value="<%= current_user.email %>">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="name">Password</label>
+            <input name="student[password]" type="password"  value="<%= current_user.password %>">
+        </div>
+
+      <div class="pure-controls">
+        <input type="submit" class="button-submit pure-button" value="Edit Profile" />
+      </div>
+  </fieldset>
+</form>
