@@ -13,7 +13,6 @@ class ApplicationController < Sinatra::Base
   get '/' do
     if logged_in?
       @user = current_user
-
       erb :'index'
     else
       erb :'index_logged_out'
@@ -26,7 +25,8 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect "/"
     else
-      redirect to '/signup'
+      flash[:message] = "Email or password incorrect."
+      redirect to '/'
     end
   end
 
@@ -47,6 +47,7 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     if params.any? { |k, v| v.length <=2 }
+      flash[:message] = "Your name or password must be longer than two characters."
       redirect to '/signup'
     else
       @user = Student.new(:name => params[:name], :email => params[:email], :password => params[:password])
