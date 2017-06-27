@@ -12,7 +12,6 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
-      @user = current_user
       erb :'index'
     else
       erb :'index_logged_out'
@@ -55,6 +54,10 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect to '/'
     end
+  end
+
+  get '/profile' do
+    erb :'/users/profile'
   end
 
   helpers do

@@ -23,7 +23,7 @@
       </tr>
   </thead>
   <tbody>
-    <% @user.courses.each do |c| %>
+    <% current_user.courses.each do |c| %>
     <tr>
       <td>
         <%= c.title %>
